@@ -9,7 +9,7 @@ namespace Prueba_Tecnica_Kaprielian.Helper
         public static (bool,ActionResult) ValidateId(string id)
         {
 
-            if(!string.IsNullOrEmpty(id))
+            if(!string.IsNullOrEmpty(id) && id != "0")
                 return (false, null);
 
 
@@ -17,7 +17,7 @@ namespace Prueba_Tecnica_Kaprielian.Helper
                 {
                     Status = 400,
                     Title = "Error en el envio de parametro id",
-                    Description = "El id no puede ser nulo o vacio",
+                    Description = "El id no puede ser ni nulo ni vacio ni 0",
                     TraceId = Guid.NewGuid().ToString()
                 };
 
@@ -41,7 +41,6 @@ namespace Prueba_Tecnica_Kaprielian.Helper
 
             return (true, new ContentResult { Content = JsonConvert.SerializeObject(error), ContentType = "application/json" });
         }
-
 
     }
 }

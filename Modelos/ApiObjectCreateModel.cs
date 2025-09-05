@@ -9,7 +9,6 @@ namespace Prueba_Tecnica_Kaprielian.Modelos
         public string Id { get; set; } = "";
         [Required]
         public string Name { get; set; } = "";
-        [Required]
         public ObjectData Data { get; set; } = new();
         public class ObjectData
         {
@@ -21,6 +20,19 @@ namespace Prueba_Tecnica_Kaprielian.Modelos
 
             [JsonPropertyName("Hard disk size")]
             public string HardDiskSize { get; set; } = "";
+
+            public string Color { get; set; } = "";
+
+            public string Capacity { get; set; } = "";
+
+            public string Generation { get; set; } = "";
+
+            [JsonPropertyName("Case Size")]
+            public string CaseSize { get; set; } = "";
+            public string Description { get; set; } = "";
+
+            [JsonPropertyName("Screen Size")]
+            public string ScreenSize { get; set; } = "";
         }
     }
 }
