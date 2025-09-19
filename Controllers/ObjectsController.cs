@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Dominio.Modelos;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Prueba_Tecnica_Kaprielian.Interfaces;
-using Prueba_Tecnica_Kaprielian.Modelos;
 using System.ComponentModel.DataAnnotations;
 
 namespace Prueba_Tecnica_Kaprielian.Controllers

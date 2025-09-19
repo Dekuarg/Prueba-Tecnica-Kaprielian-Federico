@@ -31,7 +31,7 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> SaveRandom([FromBody][Required] RandomUser data) 
+        public async Task<ActionResult> SaveRandom([FromBody] RandomUser data) 
         {
             _logger.LogInformation($"Entrada al endpoint SaveRandom y los siguientes parametros: {JsonConvert.SerializeObject(data)}");
 
