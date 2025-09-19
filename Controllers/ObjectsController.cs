@@ -1,4 +1,8 @@
 ﻿using Dominio.Modelos;
+using Dominio.ModelosDB;
+using FluentValidation;
+using Infraestructura.CarpetaPrincipal;
+using Logica.Validaciones;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Prueba_Tecnica_Kaprielian.Interfaces;
@@ -12,14 +16,17 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
     {
         private readonly IApiObject _servicio;
         private readonly ILogger<ObjectsController> _logger;
-        public ObjectsController(IApiObject servicio, ILogger<ObjectsController> logger)
+        private readonly AppDbContext _context;
+        public ObjectsController(IApiObject servicio, ILogger<ObjectsController> logger, AppDbContext context)
         {
             _servicio = servicio;
             _logger = logger;
+            _context = context;
         }
         [HttpGet] 
         public async Task<ActionResult> GetAll() 
         {
+        
             _logger.LogInformation("Entrada al endpoint GetAll");
 
             ActionResult respuesta = await _servicio.GetAll();

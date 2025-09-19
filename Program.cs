@@ -13,6 +13,13 @@ using NLog.Web;
 using System;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
+using Dominio.Interfaces;
+using Dominio.Modelos;
+using Infraestructura.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Infraestructura.CarpetaPrincipal;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Logica.Services;
 
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -29,6 +36,14 @@ try
     builder.Logging.ClearProviders();
     builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
     builder.Host.UseNLog();
+
+    builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("con") ?? throw new Exception("sin connectionstring"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("con"))));
+
+    builder.Services.AddScoped<IRepository, ObjectosApiRepository>();
+    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+    builder.Services.AddHealthChecks().AddCheck<HealthCheckServices>("HealthCheck", HealthStatus.Unhealthy);
 
     builder.Services.AddHttpClient<IApiObject, ApiObject>(client =>
     {
@@ -75,6 +90,7 @@ try
 
     var app = builder.Build();
 
+    app.MapHealthChecks("/Health/Index");
     // Configure the HTTP request pipeline.
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", ""));
