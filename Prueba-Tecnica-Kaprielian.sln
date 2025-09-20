@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "..\Dominio\Domin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "..\Logica\Logica.csproj", "{47C02079-EEC1-4B34-817A-E0C8BD99A6C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectApiXUnitTest", "..\ObjectApiXUnitTest\ObjectApiXUnitTest.csproj", "{0C9421F1-93F1-42BB-93E9-AA9BB3A7FDAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{47C02079-EEC1-4B34-817A-E0C8BD99A6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47C02079-EEC1-4B34-817A-E0C8BD99A6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47C02079-EEC1-4B34-817A-E0C8BD99A6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C9421F1-93F1-42BB-93E9-AA9BB3A7FDAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9421F1-93F1-42BB-93E9-AA9BB3A7FDAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9421F1-93F1-42BB-93E9-AA9BB3A7FDAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9421F1-93F1-42BB-93E9-AA9BB3A7FDAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

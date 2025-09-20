@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Prueba_Tecnica_Kaprielian.Interfaces;
 using Prueba_Tecnica_Kaprielian.Modelos;
 
@@ -16,21 +15,10 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetRandom()
-        {
-
-            ActionResult respuesta = await _servicio.GetRandom();
-
-            return respuesta;
-        }
+        public async Task<ActionResult> GetRandom() => await _servicio.GetRandom();
 
         [HttpPost]
-        public async Task<ActionResult> SaveRandom([FromBody] RandomUser data) 
-        {
+        public async Task<ActionResult> SaveRandom([FromBody] RandomUser data) => await _servicio.SaveRandom(data);
 
-            ActionResult respuesta = await _servicio.SaveRandom(data);
-
-            return respuesta;
-        }
     }
 }

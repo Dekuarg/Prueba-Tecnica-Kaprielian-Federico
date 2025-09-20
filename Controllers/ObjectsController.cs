@@ -1,8 +1,4 @@
 ﻿using Dominio.Modelos;
-using Dominio.ModelosDB;
-using FluentValidation;
-using Infraestructura.CarpetaPrincipal;
-using Logica.Validaciones;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Prueba_Tecnica_Kaprielian.Interfaces;
@@ -20,39 +16,19 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
             _servicio = servicio;
         }
         [HttpGet] 
-        public async Task<ActionResult> GetAll() 
-        {  
+        public async Task<ActionResult> GetAll() => await _servicio.GetAll();
 
-            ActionResult respuesta = await _servicio.GetAll();
-
-            return respuesta;
-        }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById([Required] string id) 
-        {
+        public async Task<ActionResult> GetById([Required] string id) => await _servicio.GetById(id);
 
-            ActionResult respuesta = await _servicio.GetById(id);
-
-            return respuesta;
-        }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody][Required] ApiObjectCreateModel data) 
-        {
+        public async Task<ActionResult> Create([FromBody][Required] ApiObjectCreateModel data) => await _servicio.Create(data);
 
-            ActionResult respuesta = await _servicio.Create(data);
-
-            return respuesta;
-        }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([Required] string id, [FromBody] ApiObjectCreateModel data) 
-        {
+        public async Task<ActionResult> Update([Required] string id, [FromBody] ApiObjectCreateModel data) => await _servicio.Update(id, data);
 
-            ActionResult respuesta = await _servicio.Update(id, data);
-
-            return respuesta;
-        }
     }
 }
