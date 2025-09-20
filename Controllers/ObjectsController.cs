@@ -15,23 +15,15 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
     public class ObjectsController : ControllerBase
     {
         private readonly IApiObject _servicio;
-        private readonly ILogger<ObjectsController> _logger;
-        private readonly AppDbContext _context;
-        public ObjectsController(IApiObject servicio, ILogger<ObjectsController> logger, AppDbContext context)
+        public ObjectsController(IApiObject servicio)
         {
             _servicio = servicio;
-            _logger = logger;
-            _context = context;
         }
         [HttpGet] 
         public async Task<ActionResult> GetAll() 
-        {
-        
-            _logger.LogInformation("Entrada al endpoint GetAll");
+        {  
 
             ActionResult respuesta = await _servicio.GetAll();
-
-            _logger.LogInformation($"Salida al endpoint GetAll");
 
             return respuesta;
         }
@@ -39,11 +31,8 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetById([Required] string id) 
         {
-            _logger.LogInformation($"Entrada al endpoint GetById y el id: {id}");
 
             ActionResult respuesta = await _servicio.GetById(id);
-
-            _logger.LogInformation($"Salida al endpoint GetById");
 
             return respuesta;
         }
@@ -51,11 +40,8 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
         [HttpPost]
         public async Task<ActionResult> Create([FromBody][Required] ApiObjectCreateModel data) 
         {
-            _logger.LogInformation($"Entrada al endpoint Create y los siguientes parametros: {JsonConvert.SerializeObject(data)}");
 
             ActionResult respuesta = await _servicio.Create(data);
-
-            _logger.LogInformation($"Salida al endpoint Create");
 
             return respuesta;
         }
@@ -63,11 +49,8 @@ namespace Prueba_Tecnica_Kaprielian.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Update([Required] string id, [FromBody] ApiObjectCreateModel data) 
         {
-            _logger.LogInformation($"Entrada al endpoint Update con los siguientes parametros: {JsonConvert.SerializeObject(data)} y el id: {id}");
 
             ActionResult respuesta = await _servicio.Update(id, data);
-
-            _logger.LogInformation($"Salida al endpoint Update");
 
             return respuesta;
         }

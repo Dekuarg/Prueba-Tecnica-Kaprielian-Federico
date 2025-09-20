@@ -19,7 +19,9 @@ namespace Prueba_Tecnica_Kaprielian.Middleware
         {
             try
             {
+             _logger.LogInformation($"Entrada de Request | Info -> {string.Join(",", context.Request.Query.Select(x=>$"{x.Key}={x.Value}"))}");
              await _next(context);
+             _logger.LogInformation($"Salida de Request | Info -> {string.Join(",", context.Request.Query.Select(x => $"{x.Key}={x.Value}"))}");
             }
             catch (Exception e)
             {

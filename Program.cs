@@ -45,6 +45,8 @@ try
 
     builder.Services.AddHealthChecks().AddCheck<HealthCheckServices>("HealthCheck", HealthStatus.Unhealthy);
 
+    builder.Services.AddMemoryCache();
+
     builder.Services.AddHttpClient<IApiObject, ApiObject>(client =>
     {
         client.BaseAddress = new Uri("https://api.restful-api.dev");
